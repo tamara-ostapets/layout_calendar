@@ -1,0 +1,5 @@
+@mixin startDay($day) {
+  .calendar__day:first-child {
+    margin-left: ($day*100px - 100)+($day*1px - 1);
+  }
+}

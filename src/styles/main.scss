@@ -1,3 +1,59 @@
-body {
-  margin: 0;
+@import "reset";
+@import "mixin";
+
+.calendar {
+  width: 710px;
+  margin: 20px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calendar__day {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  margin-right: 1px;
+  margin-top: 1px;
+  background-color: #eee;
+  border: 1px solid black;
+  position: relative;
+  transition-duration: 500ms;
+  &:hover {
+    cursor: pointer;
+    bottom: 20px;
+    background-color: pink;
+  }
+}
+
+$week-day: (
+  "mon": 1,
+  "tue": 2,
+  "wed": 3,
+  "thu": 4,
+  "fri": 5,
+  "sat": 6,
+  "sun": 7
+);
+
+@for $i from 1 through 31 {
+  .calendar__day:nth-child(#{$i})::before {
+    content: "#{$i}";
+  }
+}
+
+.calendar__day:nth-child(n+29) {
+  display: none;
+}
+
+@for $i from 28 through 30 {
+  .calendar-#{$i} .calendar__day:nth-child(-n+#{$i}) {
+    display: block;
+  }
+}
+
+@each $name, $digit in $week-day {
+  .calendar-#{$name} {
+    @include startDay($digit);
+  }
 }
