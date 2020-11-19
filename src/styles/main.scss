@@ -6,23 +6,23 @@
   margin: 20px auto 0;
   display: flex;
   flex-wrap: wrap;
-}
 
-.calendar__day {
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  line-height: 100px;
-  margin-right: 1px;
-  margin-top: 1px;
-  background-color: #eee;
-  border: 1px solid black;
-  position: relative;
-  transition-duration: 500ms;
-  &:hover {
-    cursor: pointer;
-    bottom: 20px;
-    background-color: pink;
+  &__day {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    margin-right: 1px;
+    margin-top: 1px;
+    background-color: #eee;
+    border: 1px solid black;
+    position: relative;
+    transition-duration: 500ms;
+    &:hover {
+      cursor: pointer;
+      bottom: 20px;
+      background-color: pink;
+    }
   }
 }
 
