@@ -8,21 +8,37 @@
   flex-wrap: wrap;
 
   &__day {
+    position: relative;
     width: 100px;
     height: 100px;
-    text-align: center;
-    line-height: 100px;
     margin-right: 1px;
     margin-top: 1px;
+    text-align: center;
+    line-height: 100px;
     background-color: #eee;
     border: 1px solid black;
-    position: relative;
     transition-duration: 500ms;
     &:hover {
-      cursor: pointer;
-      bottom: 20px;
       background-color: pink;
+      cursor: pointer;
+      transform: translate(0, -20px);
     }
+  }
+}
+
+@for $i from 1 through 31 {
+  .calendar__day:nth-child(#{$i})::before {
+    content: "#{$i}";
+  }
+}
+
+.calendar__day:nth-child(n+29) {
+  display: none;
+}
+
+@for $i from 28 through 31 {
+  .calendar-#{$i} .calendar__day:nth-child(-n+#{$i}) {
+    display: block;
   }
 }
 
@@ -35,22 +51,6 @@ $week-day: (
   "sat": 6,
   "sun": 7
 );
-
-@for $i from 1 through 31 {
-  .calendar__day:nth-child(#{$i})::before {
-    content: "#{$i}";
-  }
-}
-
-.calendar__day:nth-child(n+29) {
-  display: none;
-}
-
-@for $i from 28 through 30 {
-  .calendar-#{$i} .calendar__day:nth-child(-n+#{$i}) {
-    display: block;
-  }
-}
 
 @each $name, $digit in $week-day {
   .calendar-#{$name} {
